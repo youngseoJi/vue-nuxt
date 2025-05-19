@@ -20,8 +20,8 @@ module.exports = {
     'plugin:prettier/recommended', // ESLint, Prettier 충돌방지 (eslint-config-prettier, eslint-plugin-prettier)
   ],
   rules: {
-		// 'no-console': 'off',
-		'vue/html-self-closing': [
+    'no-console': 'off',
+    'vue/html-self-closing': [
       'warn',
       {
         html: {
