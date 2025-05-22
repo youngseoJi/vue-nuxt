@@ -45,6 +45,25 @@
       <p class="q-mt-lg text-grey-8">
         {{ course?.content }}
       </p>
+      <template #footer>
+        <ClientOnly>
+          <q-btn
+            v-if="prevCourse"
+            label="이전 강의"
+            color="primary"
+            unelevated
+            :to="prevCourse.path"
+          />
+          <q-space />
+          <q-btn
+            v-if="nextCourse"
+            label="다음 강의"
+            color="primary"
+            unelevated
+            :to="nextCourse.path"
+          />
+        </ClientOnly>
+      </template>
     </AppCard>
   </div>
 </template>
@@ -52,7 +71,15 @@
 <script setup lang="ts">
 const route = useRoute();
 const courseSlug = route.params.courseSlug as string; // 무조건 문자값이여서 타입 선언
-const { course } = useCourse(courseSlug);
+const { course, prevCourse, nextCourse } = useCourse(courseSlug);
+console.log('111');
+//  pages/ 디렉토리에 있는 페이지 컴포넌트에 대한 메타데이터를 설정
+definePageMeta({
+  // fullPath : 현재 페이지의 전체 경로를 포함 하는 URL (query 등 ~ 까지)
+  key: (route) => route.fullPath,
+  title: 'my homepage',
+  pageType: '',
+});
 </script>
 
 <style scoped></style>
