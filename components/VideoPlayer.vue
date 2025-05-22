@@ -17,7 +17,9 @@ export interface Props {
   src?: string;
 }
 
+// withDefaults : 제네릭에서 기본값을 설정할 수 있는 방법
 withDefaults(defineProps<Props>(), {
+  // 디폴트 값
   src: 'https://www.youtube.com/embed/zmq2zu-UsRk',
 });
 </script>
